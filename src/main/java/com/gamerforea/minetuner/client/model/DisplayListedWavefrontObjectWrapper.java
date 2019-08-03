@@ -78,7 +78,7 @@ public final class DisplayListedWavefrontObjectWrapper implements IModelCustom
 		{
 			for (Map.Entry<String, Integer> entry : this.lists.entrySet())
 			{
-				if (entry.getKey().equalsIgnoreCase(partName))
+				if (partName.equalsIgnoreCase(entry.getKey()))
 				{
 					listId = entry.getValue();
 					this.lists.put(partName, listId);
@@ -97,6 +97,9 @@ public final class DisplayListedWavefrontObjectWrapper implements IModelCustom
 		for (Map.Entry<String, Integer> entry : this.lists.entrySet())
 		{
 			String groupName = entry.getKey();
+			if (groupName == null)
+				continue;
+
 			boolean skipPart = false;
 
 			for (String excludedGroupName : excludedGroupNames)
